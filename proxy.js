@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     return;
   }
   proxy.web(req, res, {
-    target: 'https://www.perplexity.ai/',
+    target: 'https://www.blackbox.ai/',
     secure: true,
     changeOrigin: true
   });
