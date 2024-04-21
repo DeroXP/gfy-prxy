@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
     changeOrigin: true
   });
 
-  console.log('Connected to site: https://www.perplexity.ai/');
+  console.log('Connected to site: ', req.url);
 });
 
 server.listen(3000, () => {
