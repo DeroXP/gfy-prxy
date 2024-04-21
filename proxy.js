@@ -6,7 +6,7 @@ const proxy = httpProxy.createProxyServer({});
 const server = http.createServer((req, res) => {
   console.log('Proxying request for:', req.url);
   proxy.web(req, res, {
-    target: 'https://agentgpt.reworkd.ai/',
+    target: 'https://copilot.microsoft.com/',
     secure: true,
     changeOrigin: true
   });
