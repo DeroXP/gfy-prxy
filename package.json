@@ -1,0 +1,9 @@
+{
+  "name": "proxy-server",
+  "version": "1.0.0",
+  "description": "Node.js proxy server",
+  "main": "proxy.js",
+  "dependencies": {
+    "http-proxy": "^1.18.1"
+  }
+}
