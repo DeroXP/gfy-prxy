@@ -1,0 +1,9 @@
+{
+  "name": "Proxy Server",
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:14",
+
+  "forwardPorts": [3000],
+  "extensions": ["dbaeumer.vscode-eslint"],
+
+  "postCreateCommand": "npm install http-proxy"
+}
