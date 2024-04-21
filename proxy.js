@@ -6,7 +6,7 @@ const proxy = httpProxy.createProxyServer({});
 const server = http.createServer((req, res) => {
   console.log('Proxying request for:', req.url);
   proxy.web(req, res, {
-    target: 'https://www.perplexity.ai/',
+    target: 'https://agentgpt.reworkd.ai/',
     secure: true,
     changeOrigin: true
   });
