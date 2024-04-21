@@ -11,7 +11,7 @@ const rl = readline.createInterface({
 
 const server = http.createServer((req, res) => {
   rl.question('Please enter the URL you want to visit (or type "skip" to go to https://www.perplexity.ai/): ', (answer) => {
-    const targetURL = (answer.trim().toLowerCase() === 'skip') ? 'https://www.perplexity.ai/' : answer.trim();
+    const targetURL = 'https://www.perplexity.ai/'
 
     console.log('Proxying request for:', req.url);
     proxy.web(req, res, {
