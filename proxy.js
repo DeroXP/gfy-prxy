@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     return;
   }
   proxy.web(req, res, {
-    target: 'https://copilot.microsoft.com/',
+    target: 'https://www.perplexity.ai/',
     secure: true,
     changeOrigin: true
   });
