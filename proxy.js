@@ -20,6 +20,9 @@ const server = http.createServer((req, res) => {
     secure: true,
     changeOrigin: true,
     timeout: 10000, // Set a timeout of 10 seconds
+    wouldRedirect: function(req, res) {
+      return false;
+    }
   }, (err) => {
     if (err) {
       console.error(`Error proxying request to ${targetUrl}:`, err);
@@ -34,11 +37,33 @@ const server = http.createServer((req, res) => {
 server.on('checkHealth', () => {
   console.log('Health check received');
   // You can add custom health check logic here
+  res.writeHead(200);
+  res.end();
 });
 
 server.listen(3000, () => {
-  console.log('Proxy server listening on port 3000');
+  console.log(`Proxy server listening on port %d`, 3000);
 });
 
+const installModule = (moduleName, flag) => {
+  return new Promise((resolve, reject) => {
+    const exec = require('child_process').exec;
+    const command = `npm install ${moduleName} ${flag}`;
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject(error);
+      } else {
+        console.log(`Installed ${moduleName} ${flag}`);
+        resolve();
+      }
+    });
+  });
+};
 
-npm install http-proxy
+installModule('http-proxy', '--save-dev')
+  .then(() => {
+    console.log('Installation completed');
+  })
+  .catch((error) => {
+    console.error('Error installing module:', error);
+  });
