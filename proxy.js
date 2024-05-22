@@ -15,11 +15,13 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  req.url = '/';
+
   proxy.web(req, res, {
     target: targetUrl,
     secure: true,
     changeOrigin: true,
-    timeout: 10000, // Set a timeout of 10 seconds
+    timeout: 10000,
     wouldRedirect: function(req, res) {
       return false;
     }
@@ -35,10 +37,15 @@ const server = http.createServer((req, res) => {
 });
 
 server.on('checkHealth', () => {
-  console.log('Health check received');
-  // You can add custom health check logic here
-  res.writeHead(200);
-  res.end();
+  const health = checkHealthStatus();
+
+  if (health.status === 'healthy') {
+    res.writeHead(200);
+    res.end('Healthy');
+  } else {
+    res.writeHead(500);
+    res.end('Unhealthy');
+  }
 });
 
 server.listen(3000, () => {
