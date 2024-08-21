@@ -13,3 +13,7 @@ docker run -p 3000:3000 proxy-server
 
 More Info:
 Make a Codespace doesn't matter the specifications, i'll make this be able to run locally later even though might not be needed tbh also might use this stuff for an auto-answer thing in the future, okay bye.
+
+### Notice
+
+I might make this a website later, so it can run without needing to make a new codespace (please fork when im done.)
